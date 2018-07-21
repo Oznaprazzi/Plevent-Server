@@ -4,7 +4,7 @@ const router = express.Router();
 const controller = require('../controllers/index.controller');
 
 router.get('/', (req, res, send) => {
-    res.send('Here');
+    res.redirect('http://asciimoticon-web.herokuapp.com');
 })
 
 // Login authentication
