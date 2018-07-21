@@ -1,0 +1,9 @@
+{
+    "name": "Plevent Server",
+    "description": "Server-Side of the event planner app",
+    "repository": "https://gitlab.ecs.vuw.ac.nz/swen325_team/plevent-server.git",
+    "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+    "keywords": ["plevent", "express", "ionic"],
+    "image": "heroku/nodejs"
+  }
+  
