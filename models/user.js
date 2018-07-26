@@ -8,7 +8,7 @@ var UserSchema = new Schema(
         password: {type: String, required: true, max: 100},
         lname: {type: String, required: true, max: 100},
         fname: {type: String, required: true, max: 100},
-        age:  {type: Date, required: false}
+        age:  {type: Date, required: true}
     }
 );
 

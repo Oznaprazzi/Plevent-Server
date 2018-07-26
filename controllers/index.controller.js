@@ -30,7 +30,8 @@ exports.register = (req, res, next) => {
         username: req.body.username,
         password: security.encrypt(req.body.password),
         fname: req.body.fname,
-        lname: req.body.lname
+        lname: req.body.lname,
+        bdate: req.body.bdate
     };
     console.log(data);
     user.create(data, (err, data) => {
