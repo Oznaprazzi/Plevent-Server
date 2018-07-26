@@ -5,7 +5,10 @@ app.controller('myCtrl', function($scope, $http){
     $scope.register = () => {
         var data = {
             username : $scope.username,
-            password: $scope.password
+            password: $scope.password,
+            lname: "Patel",
+            fname: "dipen"
+
         }
         if(data.username != null && data.password != null){
             $http.post('http://localhost:8080/register', data).then(res => {
@@ -19,6 +22,7 @@ app.controller('myCtrl', function($scope, $http){
         var data = {
             username: $scope.username,
             password: $scope.password
+
         }
 
         if(data.username != null && data.password != null){

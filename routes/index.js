@@ -5,7 +5,7 @@ const controller = require('../controllers/index.controller');
 
 router.get('/', (req, res, send) => {
     res.redirect('http://asciimoticon-web.herokuapp.com');
-})
+});
 
 // Login authentication
 router.post('/login', controller.login);
