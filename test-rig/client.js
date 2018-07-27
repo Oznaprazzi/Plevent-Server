@@ -8,11 +8,11 @@ app.controller('myCtrl', function($scope, $http){
             password: $scope.password,
             lname: "Patel",
             fname: "dipen"
-
         }
         if(data.username != null && data.password != null){
             $http.post('http://localhost:8080/register', data).then(res => {
-                alert(res.data);
+                console.log(res.data);    
+            // alert(res.data);
             });
         }
         console.log(data);

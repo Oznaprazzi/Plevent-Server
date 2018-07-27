@@ -13,7 +13,7 @@ var users = require('./routes/users');
 var app = express();
 
 // Database Configuration & Setup
-var mongoDB = 'mongodb://admin:adminpw1@ds243491.mlab.com:43491/plevent';
+var mongoDB = 'mongodb://admin:adminpw1@ds135619.mlab.com:35619/plevent-db';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
