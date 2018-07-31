@@ -10,7 +10,7 @@ app.controller('myCtrl', function($scope, $http){
             fname: "dipen"
         }
         if(data.username != null && data.password != null){
-            $http.post('http://localhost:8080/register', data).then(res => {
+            $http.post('http://localhost:8080/event', data).then(res => {
                 console.log(res.data);    
             // alert(res.data);
             });
