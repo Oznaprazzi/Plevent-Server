@@ -11,7 +11,7 @@ var EventSchema = new Schema(
         eventName: {type: String, required: true, max: 100},
         eventDate:  {type: Date, required:true},
         users: [
-            {type: Schema.Types.ObjectId, required: true, ref: 'User'}
+            {type: Schema.Types.ObjectId,  ref: 'User'}
         ]
 
     }

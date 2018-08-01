@@ -14,13 +14,10 @@ exports.login = (req, res, next) => {
     // Authenticate
     query.exec((err, user) => {
         if(err) {
-            console.log("ERROR!");
             res.send(err);
         } else {
             var stored = user.password;
             var valid = security.authenticate(data.password, stored);
-            console.log(valid);
-            console.log("hereeeeee");
             res.send(valid);
         }
     });
@@ -55,6 +52,26 @@ exports.event = (req, res, next) => {
             res.send(err);
         } else {
             res.json(data);
+        }
+    });
+}
+
+exports.get_events = (req, res, next) => {
+
+    var data = {
+        username: req.body.username
+    }
+    // Find the user with the given username
+    var query = user.findOne({ 'username': data.username });
+
+    // Authenticate
+    query.exec((err, user) => {
+        if(err) {
+            console.log("errored");
+        } else {
+
+           console.log("in here");
+
         }
     });
 }
