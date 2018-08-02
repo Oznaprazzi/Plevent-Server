@@ -18,10 +18,12 @@ exports.login = (req, res, next) => {
             res.send(err);
         } else {
             var stored = user.password;
+            console.log(user);
             var valid = security.authenticate(data.password, stored);
-            console.log(valid);
-            console.log("hereeeeee");
-            res.send(valid);
+            res.status(200).json({
+                user: user,
+                valid: valid
+            });
         }
     });
 }
