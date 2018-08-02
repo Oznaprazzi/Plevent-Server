@@ -32,4 +32,15 @@ app.controller('myCtrl', function($scope, $http){
         }
         console.log(data);
     }
+
+    $scope.addItem = () => {
+        var data = {
+            description: $scope.description
+        }
+        if(data.description != null){
+            $http.post('http://localhost:8080/grocery/item', data).then(res => {
+                console.log(res.data);
+            });
+        }
+    }
 });

@@ -9,12 +9,13 @@ var cors = require('cors');
 // Route Definition
 var index = require('./routes/index');
 var users = require('./routes/users');
+var grocery = require('./routes/grocery');
 
 var app = express();
 
 // Database Configuration & Setup
 var mongoDB = 'mongodb://admin:adminpw1@ds135619.mlab.com:35619/plevent-db';
-mongoose.connect(mongoDB);
+mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/grocery', grocery);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

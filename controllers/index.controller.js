@@ -19,8 +19,6 @@ exports.login = (req, res, next) => {
         } else {
             var stored = user.password;
             var valid = security.authenticate(data.password, stored);
-            console.log(valid);
-            console.log("hereeeeee");
             res.send(valid);
         }
     });
