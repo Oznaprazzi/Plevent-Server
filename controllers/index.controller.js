@@ -15,7 +15,6 @@ exports.login = (req, res, next) => {
     // Authenticate
     query.exec((err, user) => {
         if(err) {
-            console.log("ERROR!");
             res.send(err);
         } else {
             var stored = user.password;
