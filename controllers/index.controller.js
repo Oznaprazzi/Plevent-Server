@@ -1,5 +1,6 @@
 var user = require('../models/user');
-
+var event = require('../models/event');
+var accommodation = require('../models/accommodation');
 
 var security = require('../services/security');
 
@@ -17,8 +18,12 @@ exports.login = (req, res, next) => {
             res.send(err);
         } else {
             var stored = user.password;
+            console.log(user);
             var valid = security.authenticate(data.password, stored);
-            res.send(valid);
+            res.status(200).json({
+                user: user,
+                valid: valid
+            });
         }
     });
 }
@@ -41,3 +46,38 @@ exports.register = (req, res, next) => {
     });
 }
 
+exports.event = (req, res, next) => {
+    var data = {
+        eventName: req.body.eventName,
+        eventDate: req.body.eventDate,
+        users: req.body.users
+    };
+    event.create(data, (err, data) => {
+        if(err){
+            res.send(err);
+        } else {
+            res.json(data);
+        }
+    });
+}
+
+exports.accommodation = (req, res, next) => {
+    var data = {
+        title: req.body.title,
+        street: req.body.street,
+        state: req.body.state,
+        city: req.body.city,
+        country:  req.body.country,
+        fromDate: req.body.fromDate,
+        toDate: req.body.toDate,
+        price: req.body.price,
+        guests: req.body.guests
+    };
+    accommodation.create(data, (err, data) => {
+        if(err){
+            res.send(err);
+        } else {
+            res.json(data);
+        }
+    });
+}
