@@ -23,5 +23,12 @@ exports.item_post = (req, res, next) => {
 }
 
 exports.item_delete = (req, res, next) => {
-
+    var id = req.params.id;
+    item.deleteMany({_id: id}, err => {
+        if(err) {
+            res.status(500);
+            res.send(err);
+        }
+        res.send(`Successfully deleted ${id}`);
+    });
 }

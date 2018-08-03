@@ -2,6 +2,8 @@ var app = angular.module('app', []);
 
 
 app.controller('myCtrl', function($scope, $http){
+    $scope.groceries = [];
+
     $scope.register = () => {
         var data = {
             username : $scope.username,
@@ -39,8 +41,36 @@ app.controller('myCtrl', function($scope, $http){
         }
         if(data.description != null){
             $http.post('http://localhost:8080/grocery/item', data).then(res => {
-                console.log(res.data);
+                updateList();
             });
         }
+    }
+
+    $scope.delItems = () => {
+        for(var item of $scope.groceries){
+            if(item.selected){
+                deleteItem(item._id);
+            }
+        }
+    }
+
+    $scope.init = () => {
+        updateList();
+    }
+
+    function deleteItem (id) {
+        $http.delete(`http://localhost:8080/grocery/item/${id}`).then(res => {
+            updateList();
+        });
+    }
+
+    function updateList() {
+        $http.get('http://localhost:8080/grocery').then(res => {
+            // Algorithm may be slow...
+            for(item of res.data){
+                item.selected = false;
+            }
+            $scope.groceries = res.data;
+        });
     }
 });
