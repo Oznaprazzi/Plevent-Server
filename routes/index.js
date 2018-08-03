@@ -13,6 +13,5 @@ router.post('/login', controller.login);
 // Registering to the system
 router.post('/register', controller.register);
 
-// Registering to the system
-router.post('/event', controller.event);
+
 module.exports = router;

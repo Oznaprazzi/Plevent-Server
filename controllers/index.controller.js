@@ -1,5 +1,5 @@
 var user = require('../models/user');
-var event = require('../models/event');
+
 
 var security = require('../services/security');
 
@@ -14,7 +14,6 @@ exports.login = (req, res, next) => {
     // Authenticate
     query.exec((err, user) => {
         if(err) {
-            console.log("ERROR!");
             res.send(err);
         } else {
             var stored = user.password;
@@ -46,17 +45,3 @@ exports.register = (req, res, next) => {
     });
 }
 
-exports.event = (req, res, next) => {
-    var data = {
-        eventName: req.body.eventName,
-        eventDate: req.body.eventDate,
-        users: req.body.users
-    };
-    event.create(data, (err, data) => {
-        if(err){
-            res.send(err);
-        } else {
-            res.json(data);
-        }
-    });
-}
