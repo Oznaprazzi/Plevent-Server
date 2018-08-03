@@ -15,4 +15,8 @@ router.post('/register', controller.register);
 
 // Registering to the system
 router.post('/event', controller.event);
+
+// Create accommodation item
+router.post('/accommodation', controller.accommodation);
+
 module.exports = router;
