@@ -1,6 +1,5 @@
 var user = require('../models/user');
 var event = require('../models/event');
-var accommodation = require('../models/accommodation');
 
 var security = require('../services/security');
 
