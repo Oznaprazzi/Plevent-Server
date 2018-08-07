@@ -2,6 +2,8 @@
  * Created by Dipen on 3/08/2018.
  */
 var event = require('../models/event');
+var mongoose = require('mongoose');
+
 
 exports.add_event = (req, res, next) => {
     var data = {
@@ -10,7 +12,7 @@ exports.add_event = (req, res, next) => {
         users: req.body.users
     };
     event.create(data, (err, data) => {
-        if(err){
+        if (err) {
             res.send(err);
         } else {
             res.json(data);
@@ -18,22 +20,32 @@ exports.add_event = (req, res, next) => {
     });
 }
 
-exports.get_events = (req, res, next) => {
-
-    var data = {
-        username: req.body.username
-    }
-    // Find the user with the given username
-    var query = user.findOne({ 'username': data.username });
-
-    // Authenticate
-    query.exec((err, user) => {
-        if(err) {
-            console.log("errored");
+exports.get_all_events = (req, res, next) => {
+    var id = req.params.id;
+    event.find().populate({path: 'users', type: id}).exec((err, events) => {
+        if (err) {
+            res.send(err);
         } else {
-
-            console.log("in here");
-
+            res.send(events);
         }
     });
 }
+
+exports.edit_event = (req, res, next) => {
+
+    var id = req.params.id;
+    console.log(id);
+    // event.findByIdAndUpdate(id, { $set: { size: 'large' }}, { new: true }, function (err, tank) {
+    //     if (err) return handleError(err);
+    //     res.send(tank);
+    // });
+
+}
+
+exports.delete_event = (req, res, next) => {
+    var id = req.params.id;
+    event.deleteMany({_id:id}).catch(err => console.log(err));
+    res.json(`Successfully deleted ${id}`);
+
+}
+
