@@ -1,6 +1,6 @@
-var item = require('../models/grocery');
+var item = require('../models/gear');
 
-exports.grocery_list = (req, res, next) => {
+exports.gear_list = (req, res, next) => {
     item.find({}, (err, items) => {
         res.send(items);
     });
@@ -10,7 +10,6 @@ exports.item_post = (req, res, next) => {
     var data = {
         description: req.body.description
     }
-    console.log(data);
     item.create(data, (err, data) => {
         if(err){
             res.status(500);
