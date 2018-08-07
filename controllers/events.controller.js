@@ -3,7 +3,7 @@
  */
 var event = require('../models/event');
 var mongoose = require('mongoose');
-
+const updateQuery = {};
 
 exports.add_event = (req, res, next) => {
     var data = {
@@ -32,19 +32,19 @@ exports.get_all_events = (req, res, next) => {
 }
 
 exports.edit_event = (req, res, next) => {
-
+//TODO need to find a way to update only changed feilds
     var id = req.params.id;
-    console.log(id);
-    // event.findByIdAndUpdate(id, { $set: { size: 'large' }}, { new: true }, function (err, tank) {
-    //     if (err) return handleError(err);
-    //     res.send(tank);
-    // });
+    event.findByIdAndUpdate(id, {$set: req.body}, {new: false}, function (err, events) {
+        if (err) return handleError(err);
+        res.send(events);
+    });
+
 
 }
 
 exports.delete_event = (req, res, next) => {
     var id = req.params.id;
-    event.deleteMany({_id:id}).catch(err => console.log(err));
+    event.deleteMany({_id: id}).catch(err => console.log(err));
     res.json(`Successfully deleted ${id}`);
 
 }

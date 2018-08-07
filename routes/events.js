@@ -11,7 +11,7 @@ router.get('/event/:id', controller.get_all_events);
 
 router.post('/add_event', controller.add_event);
 
-router.post('/edit_event', controller.edit_event);
+router.post('/edit_event/:id', controller.edit_event);
 
 router.delete('/delete_event/:id', controller.delete_event);
 
