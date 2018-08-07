@@ -39,8 +39,9 @@ app.controller('myCtrl', function($scope, $http){
         var data = {
             description: $scope.description
         }
+        console.log(data);
         if(data.description != null){
-            $http.post('http://localhost:8080/grocery/item', data).then(res => {
+            $http.post('http://localhost:8080/gears/item', data).then(res => {
                 updateList();
             });
         }
@@ -59,13 +60,13 @@ app.controller('myCtrl', function($scope, $http){
     }
 
     function deleteItem (id) {
-        $http.delete(`http://localhost:8080/grocery/item/${id}`).then(res => {
+        $http.delete(`http://localhost:8080/gears/item/${id}`).then(res => {
             updateList();
         });
     }
 
     function updateList() {
-        $http.get('http://localhost:8080/grocery').then(res => {
+        $http.get('http://localhost:8080/gears').then(res => {
             // Algorithm may be slow...
             for(item of res.data){
                 item.selected = false;
