@@ -16,13 +16,19 @@ exports.login = (req, res, next) => {
         if(err) {
             res.send(err);
         } else {
-            var stored = user.password;
-            console.log(user);
-            var valid = security.authenticate(data.password, stored);
-            res.status(200).json({
-                user: user,
-                valid: valid
-            });
+            if(user == null){
+                res.status(200).json({
+                    user,
+                    valid: false
+                });
+            } else {
+                var stored = user.password;
+                var valid = security.authenticate(data.password, stored);
+                res.status(200).json({
+                    user: user,
+                    valid: valid
+                });
+            }
         }
     });
 }
