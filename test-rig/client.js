@@ -65,7 +65,7 @@ app.controller('myCtrl', function($scope, $http){
     }
 
     function updateList() {
-        $http.get('http://localhost:8080/grocery').then(res => {
+        $http.get('http://localhost:8080/events/event').then(res => {
             // Algorithm may be slow...
             for(item of res.data){
                 item.selected = false;
