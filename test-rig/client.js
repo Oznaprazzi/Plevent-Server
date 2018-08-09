@@ -3,6 +3,33 @@ var app = angular.module('app', []);
 
 app.controller('myCtrl', function($scope, $http){
     $scope.groceries = [];
+    $scope.expenses = [];
+
+    // Testing Expenses
+
+    $scope.addExpense = () => {
+        var data = {
+            title: $scope.expense.title,
+            category: $scope.expense.category,
+            amount: parseFloat($scope.expense.amount)
+        }
+        console.log(data);
+        if(data.title != null && data.category != null && data.amount != null && data.amount > 0){
+            $http.post('http://localhost:8080/expenses/expense', data).then(res => {
+                updateList();
+            });
+        }
+    }
+
+    $scope.delExpense = () => {
+        for(var item of $scope.expenses){
+            if(item.selected){
+                deleteItem(item._id);
+            }
+        }
+    }
+
+    // Other
 
     $scope.register = () => {
         var data = {
@@ -60,18 +87,18 @@ app.controller('myCtrl', function($scope, $http){
     }
 
     function deleteItem (id) {
-        $http.delete(`http://localhost:8080/gears/item/${id}`).then(res => {
+        $http.delete(`http://localhost:8080/expenses/expense/${id}`).then(res => {
             updateList();
         });
     }
 
     function updateList() {
-        $http.get('http://localhost:8080/gears').then(res => {
+        $http.get('http://localhost:8080/expenses').then(res => {
             // Algorithm may be slow...
             for(item of res.data){
                 item.selected = false;
             }
-            $scope.groceries = res.data;
+            $scope.expenses = res.data;
         });
     }
 });

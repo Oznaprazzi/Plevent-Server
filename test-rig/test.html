@@ -17,7 +17,7 @@
       <input type="password" ng-model="password">
       <br>
       <button ng-click="register()">Login</button> -->
-      <h1>Grocery List Prototype</h1>
+      <!-- <h1>Grocery List Prototype</h1>
       <h2>Add Item</h2>
       <label for="description">Description</label>
       <input type="text" id="description" ng-model="description" />
@@ -28,6 +28,27 @@
       <ul>
         <li ng-repeat="item in groceries">
             <input type="checkbox" value="{{item._id}}" ng-model="item.selected"/> {{item.description}}
+        </li>
+      </ul> -->
+      <h1>Expenses Prototype</h1>
+      <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" ng-model="expense.title"/>
+      </div>
+      <div>
+        <label for="category">Category</label>
+        <input type="text" id="category" ng-model="expense.category"/>
+      </div>
+      <div>
+        <label for="amount">Amount</label>
+        <input type="text" id="amount" ng-model="expense.amount" />
+      </div>
+      <button class="btn btn-primary" ng-click="addExpense()">Add</button>
+      <button class="btn btn-secondary" ng-click="delExpense()">Delete</button>
+      <h2>Expense List</h2>
+      <ul>
+        <li ng-repeat="item in expenses">
+          <input type="checkbox" value="{{item._id}}" ng-model="item.selected"/> [{{item.category}}] {{item.title}}
         </li>
       </ul>
   </body>
