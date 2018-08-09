@@ -32,7 +32,6 @@ exports.get_all_events = (req, res, next) => {
 }
 
 exports.edit_event = (req, res, next) => {
-//TODO need to find a way to update only changed feilds
     var id = req.params.id;
     event.findByIdAndUpdate(id, {$set: req.body}, {new: false}, function (err, events) {
         if (err) return handleError(err);

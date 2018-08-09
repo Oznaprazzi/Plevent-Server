@@ -3,10 +3,12 @@ const router = express.Router();
 
 const controller = require('../controllers/accommo.controller');
 
-router.get('/getAccommo', controller.accommo_list);
+router.get('/get_accommo', controller.accommo_list);
 
-router.post('/addAccommo', controller.accommo_post);
+router.post('/add_accommo', controller.accommo_post);
 
-router.delete('/deleteAccommo/:id', controller.accommo_delete);
+router.post('/edit_accommo/:id', controller.accommo_edit);
+
+router.delete('/delete_accommo/:id', controller.accommo_delete);
 
 module.exports = router;
