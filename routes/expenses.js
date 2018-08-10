@@ -9,4 +9,6 @@ router.post('/expense', controller.expense_post);
 
 router.delete('/expense/:id', controller.expense_delete);
 
+router.post('/expense/:id', controller.expense_edit);
+
 module.exports = router;

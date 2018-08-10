@@ -22,8 +22,20 @@ exports.expense_post = (req, res, next) => {
     });
 }
 
+exports.expense_edit = (req, res, next) => {
+    var id = req.params.id;
+    expense.findByIdAndUpdate(id, {$set: req.body}, {new:false}, (err, expenses) => {
+        if(err){
+            res.status(500);
+            res.send(err);
+        } else {
+            res.json(expenses);
+        }
+    })
+}
+
 exports.expense_delete = (req, res, next) => {
     var id = req.params.id;
-    item.deleteMany({_id: id}).catch(err => res.send(err));
+    expense.deleteMany({_id: id}).catch(err => res.send(err));
     res.json({message: 'Successful'});
 }
