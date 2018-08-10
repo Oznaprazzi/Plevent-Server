@@ -38,7 +38,6 @@ exports.edit_event = (req, res, next) => {
         res.send(events);
     });
 
-
 }
 
 exports.delete_event = (req, res, next) => {
