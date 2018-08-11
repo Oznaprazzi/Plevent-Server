@@ -40,6 +40,10 @@ exports.edit_event = (req, res, next) => {
 
 }
 
+function handleError(err){
+    console.log(err);
+}
+
 exports.delete_event = (req, res, next) => {
     var id = req.params.id;
     event.deleteMany({_id: id}).catch(err => console.log(err));
