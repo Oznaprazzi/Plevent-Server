@@ -7,6 +7,7 @@ app.controller('myCtrl', function($scope, $http){
 
     $scope.send = () => {
         const message = $scope.message;
+
         var body = {
             user,
             message
@@ -14,11 +15,13 @@ app.controller('myCtrl', function($scope, $http){
         $scope.logs.push(body);
         $http.post('http://localhost:8080/chatbot', body).then(res => {
             var reply = res.data;
+            console.log(reply);
             var botMsg = {
                 user: 'Bot',
                 message: reply
             }
             $scope.logs.push(botMsg);
+            console.log($scope.logs);
         });
     }
 });

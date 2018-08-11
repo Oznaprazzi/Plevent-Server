@@ -14,10 +14,11 @@
             <input type="text" placeholder="Enter a message..." style="width: 50vw" ng-model="message"/>
             <button class="btn btn-primary" ng-click="send()">Send</button>
         </div>
+        <p ng-bind-html="html"></p>
         <div>
             <h2>Messages</h2>
             <ul>
-                <li ng-repeat="log in logs">{{log.user}}: {{log.message}}</li>
+                <li ng-repeat="log in logs">[{{log.user}}] {{log.message}}</li>
             </ul>
         </div>
     </body>
