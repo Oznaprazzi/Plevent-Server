@@ -30,11 +30,15 @@ exports.accommo_post = (req, res, next) => {
 
 exports.accommo_delete = (req, res, next) => {
     var id = req.params.id;
-    accommodation.deleteMany({_id: id}, err => {
-        if(err) {
-            res.status(500);
-            res.send(err);
-        }
-        res.send(`Successfully deleted ${id}`);
+    accommodation.deleteMany({_id: id}).catch(err => console.log(err));
+    res.json(`Successfully deleted ${id}`);
+
+}
+
+exports.accommo_edit = (req, res, next) => {
+    var id = req.params.id;
+    accommodation.findByIdAndUpdate(id, {$set: req.body}, {new: false}, function (err, accommo) {
+        if (err) return handleError(err);
+        res.send(accommo);
     });
 }
