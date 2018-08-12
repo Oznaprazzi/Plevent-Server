@@ -8,7 +8,7 @@ var ExpenseSchema = new Schema(
         title: String,
         category: String,
         amount: Number,
-        event: {type: Schema.Types.ObjectId,  ref: 'Event'}
+        event: {type: Schema.Types.ObjectId,  ref: 'Events'}
     }
 );
 

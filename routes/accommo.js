@@ -3,7 +3,7 @@ const router = express.Router();
 
 const controller = require('../controllers/accommo.controller');
 
-router.get('/get_accommo', controller.accommo_list);
+router.get('/get_accommo/:id', controller.accommo_list);
 
 router.post('/add_accommo', controller.accommo_post);
 

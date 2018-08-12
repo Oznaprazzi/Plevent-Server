@@ -1,10 +1,19 @@
 var mongoose = require('mongoose');
 var accommodation = require('../models/accommodation');
+var event = require('../models/event');
 
 exports.accommo_list = (req, res, next) => {
-    accommodation.find({}, (err, items) => {
-        res.send(items);
+    var id = req.params.id;
+    var list = [];
+    accommodation.find({}, (err, accommos) => {
+        for(let i = 0; i < accommos.length; i++){
+            if(accommos[i].event == id){
+                list.push(accommos[i]);
+            }
+        }
+        res.send(list);
     });
+
 }
 
 exports.accommo_post = (req, res, next) => {
@@ -17,7 +26,8 @@ exports.accommo_post = (req, res, next) => {
         fromDate: req.body.fromDate,
         toDate: req.body.toDate,
         price: req.body.price,
-        guests: req.body.guests
+        guests: req.body.guests,
+        event: req.body.event
     };
     accommodation.create(data, (err, data) => {
         if(err){

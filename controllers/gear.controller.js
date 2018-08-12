@@ -1,8 +1,15 @@
 var item = require('../models/gear');
 
 exports.gear_list = (req, res, next) => {
+    var id = req.params.id;
+    var list = [];
     item.find({}, (err, items) => {
-        res.send(items);
+        for(let i = 0; i < items.length; i++){
+            if(items[i].event == id){
+                list.push(items[i]);
+            }
+        }
+        res.send(list);
     });
 }
 

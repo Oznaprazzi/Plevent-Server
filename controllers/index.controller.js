@@ -65,24 +65,3 @@ exports.event = (req, res, next) => {
         }
     });
 }
-
-exports.accommodation = (req, res, next) => {
-    var data = {
-        title: req.body.title,
-        street: req.body.street,
-        state: req.body.state,
-        city: req.body.city,
-        country:  req.body.country,
-        fromDate: req.body.fromDate,
-        toDate: req.body.toDate,
-        price: req.body.price,
-        guests: req.body.guests
-    };
-    accommodation.create(data, (err, data) => {
-        if(err){
-            res.send(err);
-        } else {
-            res.json(data);
-        }
-    });
-}

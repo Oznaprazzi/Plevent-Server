@@ -22,12 +22,16 @@ exports.add_event = (req, res, next) => {
 
 exports.get_all_events = (req, res, next) => {
     var id = req.params.id;
-    event.find().populate({path: 'users', type: id}).exec((err, events) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send(events);
+    var list = [];
+    event.find({}, (err, events) => {
+        for(let i = 0; i < events.length; i++){
+            for(let j = 0; j < events[i].users.length; j++){
+                if(events[i].users[j] == id){
+                    list.push(events[i]);
+                }
+            }
         }
+        res.send(list);
     });
 }
 

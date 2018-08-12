@@ -3,7 +3,7 @@ const router = express.Router();
 
 const controller = require('../controllers/expense.controller');
 
-router.get('/', controller.expense_list);
+router.get('/:id', controller.expense_list);
 
 router.post('/expense', controller.expense_post);
 

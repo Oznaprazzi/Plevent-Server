@@ -1,8 +1,15 @@
 var expense = require('../models/expense');
 
 exports.expense_list = (req, res, next) => {
-    expense.find({}, (err, expenses) => {
-        res.send(expenses);
+    var id = req.params.id;
+    var list = [];
+    expense.find({}, (err, items) => {
+        for(let i = 0; i < items.length; i++){
+            if(items[i].event == id){
+                list.push(items[i]);
+            }
+        }
+        res.send(list);
     });
 }
 
