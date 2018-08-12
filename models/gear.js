@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var GearSchema = new Schema(
     {
-        description: String
+        description: String,
+        event: {type: Schema.Types.ObjectId,  ref: 'Events'}
     }
 );
 

@@ -14,6 +14,8 @@ var grocery = require('./routes/grocery');
 var accommo = require('./routes/accommo');
 var gears = require('./routes/gears');
 var aval = require('./routes/availability')
+var expenses = require('./routes/expenses');
+var chatbot = require('./routes/chatbot');
 
 
 var app = express();
@@ -49,6 +51,8 @@ app.use('/grocery', grocery);
 app.use('/accommo', accommo);
 app.use('/gears', gears);
 app.use('/availability', aval);
+app.use('/expenses', expenses);
+app.use('/chatbot', chatbot);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -12,7 +12,8 @@ var AccommodationSchema = new Schema(
         fromDate: {type: Date, required: true},
         toDate: {type: Date, required: true},
         price: {type: Number, required: true},
-        guests: {type: Number}
+        guests: {type: Number},
+        event: {type: Schema.Types.ObjectId,  ref: 'Events'}
     }
 );
 
