@@ -20,3 +20,34 @@ exports.get_user = (req, res, next) => {
         }
     });
 }
+
+exports.user_edit = (req, res, next) =>{
+    var id = req.params.id;
+    var username = req.params.username;
+    if(username != undefined) {
+        var query = user.findOne({'username': username});
+        // Authenticate
+        query.exec((err, user) => {
+            if (err) {
+                res.send(err);
+            } else {
+                if (user == null) {
+                    res.status(200).json({
+                        user,
+                        valid: false
+                    });
+                }
+            }
+        });
+    }
+
+    user.findByIdAndUpdate(id, {$set: req.body}, {new: false}, function (err, user) {
+        console.log(req.body);
+        if (err) return handleError(err);
+        res.status(200).json({
+            user,
+            valid: true
+        });
+    });
+
+}

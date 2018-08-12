@@ -23,7 +23,7 @@
     "express": "^4.16.3",
     "http": "0.0.0",
     "method-override": "^3.0.0",
-    "mongoose": "^5.2.4",
+    "mongoose": "^5.2.7",
     "mongoose-unique-validator": "^2.0.1",
     "morgan": "^1.9.0",
     "rivescript": "^2.0.0-alpha.6",
