@@ -6,8 +6,8 @@
 ^ "toilets" to check the nearest toilets, \n
 ^ "music" for music suggestions, \n
 ^ "medic" for first aid suggestions, \n
-^ "themes" for party themes, \n
-^ "games" for road trip game suggestions, \n
+^ "themes" for party themes, and \n
+^ "games" for road trip game suggestions \n
 
 + weather
 - Here's the weather results! https://goo.gl/9DRLm9
