@@ -15,7 +15,7 @@ var accommo = require('./routes/accommo');
 var gears = require('./routes/gears');
 var expenses = require('./routes/expenses');
 var chatbot = require('./routes/chatbot');
-
+var waypoint = require('./routes/waypoint');
 
 var app = express();
 

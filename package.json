@@ -16,6 +16,7 @@
   "author": "Chris Rabe",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
@@ -27,6 +28,7 @@
     "mongoose-unique-validator": "^2.0.1",
     "morgan": "^1.9.0",
     "rivescript": "^2.0.0-alpha.6",
-    "superlogin": "^0.6.1"
+    "superlogin": "^0.6.1",
+    "urlencode": "^1.1.0"
   }
 }
