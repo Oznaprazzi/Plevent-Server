@@ -11,7 +11,7 @@
 // Bot Variables
 ! var name     = Plive
 ! var fullname = Plive
-! var age      = 0
+! var age      = a few days old
 ! var birthday = August 8 2018
 ! var sex      = female
 ! var location = Wellington
