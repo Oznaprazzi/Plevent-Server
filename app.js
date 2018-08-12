@@ -13,6 +13,7 @@ var events = require('./routes/events');
 var grocery = require('./routes/grocery');
 var accommo = require('./routes/accommo');
 var gears = require('./routes/gears');
+var aval = require('./routes/availability')
 
 
 var app = express();
@@ -47,7 +48,7 @@ app.use('/events', events);
 app.use('/grocery', grocery);
 app.use('/accommo', accommo);
 app.use('/gears', gears);
-
+app.use('/availability', aval);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

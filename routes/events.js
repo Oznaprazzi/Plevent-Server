@@ -13,8 +13,10 @@ router.post('/add_event', controller.add_event);
 
 router.post('/edit_event/:id', controller.edit_event);
 
+router.post('/add_aval_planner/:id', controller.edit_event_aval);
+
 router.delete('/delete_event/:id', controller.delete_event);
 
-// router.delete('/add_event', controller.events);
+
 module.exports = router;
 

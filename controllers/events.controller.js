@@ -40,6 +40,14 @@ exports.edit_event = (req, res, next) => {
 
 }
 
+exports.edit_event_aval = (req, res, next) => {
+    var id = req.params.id;
+    event.findByIdAndUpdate(id, { $set: { hasAvalibilityPlanner: true }}, { new: true }, function (err, event) {
+        if (err) return handleError(err);
+        res.send(event );
+    });
+}
+
 exports.delete_event = (req, res, next) => {
     var id = req.params.id;
     event.deleteMany({_id: id}).catch(err => console.log(err));
