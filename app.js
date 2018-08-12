@@ -51,6 +51,7 @@ app.use('/accommo', accommo);
 app.use('/gears', gears);
 app.use('/expenses', expenses);
 app.use('/chatbot', chatbot);
+app.use('/waypoint', waypoint);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

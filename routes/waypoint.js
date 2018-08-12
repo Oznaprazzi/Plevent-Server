@@ -5,6 +5,6 @@ const controller = require('../controllers/waypoint.controller');
 
 router.get('/', controller.index);
 
-router.post('/address', controller.address_get);
+router.post('/address', controller.get_address);
 
-router.post('/coord', controller.coord_get)
+module.exports = router;

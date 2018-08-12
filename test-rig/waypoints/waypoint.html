@@ -9,5 +9,10 @@
         <script src="./waypoint.js"></script>
     </head>
     <body ng-controller="myCtrl">
+        <h1>Address Lookup</h1>
+        <div>
+            <input type="text" placeholder="Enter an address..." style="width: 50vw" ng-model="address"/>
+            <button class="btn btn-primary" ng-click="send()">Send</button>
+        </div>
     </body>
 </html>

@@ -1,5 +1,5 @@
 var urlencode = require('urlencode');
-var axios = require('axios');
+var axios = require('axios').default;
 
 const api = 'https://api.addressfinder.io/api/nz/address'; // api address
 
@@ -13,10 +13,11 @@ const strict = 2; // result closeness to the query parameter
  * 
  * @param {*} query partial string  being searched
  */
-exports.autocomplete = (query) => {
-    const url = `${api}?key=${key}&secret=${secret}&q=${query}&format=${format}&strict=${strict}`;
-    const encoded = urlencode(url);
-    return encoded;
+exports.autocomplete = async (query) => {
+    var encodedQuery = urlencode(query);
+    const url = `${api}?key=${key}&secret=${secret}&q=${encodedQuery}&format=${format}&strict=${strict}`;
+    var results = await axios.get(url).catch(err => console.log(err));
+    return results;
 }
 
 /**
