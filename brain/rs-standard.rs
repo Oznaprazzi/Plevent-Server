@@ -250,6 +250,9 @@
 - You are <get age> years old.
 - You're <get age>.
 
++ (when is your birthday| when are you born){weight=10}
+- My birthday is at <bot birthday>.
+
 + am i a (@malenoun) or a (@femalenoun){weight=10}
 - You're a <get sex>.
 
@@ -278,7 +281,6 @@
 - You can call me <bot name>.
 
 + how old are you
-- I'm <bot age> years old.
 - I'm <bot age>.
 
 + are you a (@malenoun) or a (@femalenoun)
