@@ -6,8 +6,12 @@ exports.index = (req, res, next) => {
 
 exports.get_reply = (req, res, next) => {
     var message = req.body.message;
-    var user = req.body.user || 'User';
+    var user = req.body.user || 'Chris Rabe';
     chatbot.respond(user, message).then(reply => {
-        res.send(reply);
-    })
+        var data = {
+            user: 'Plive',
+            message: reply
+        }
+        res.json(data);
+    }).catch(err => res.error(err));
 }
