@@ -19,17 +19,3 @@ var AvailabilityPlannerSchema = new Schema(
 // Export Model
 module.exports = mongoose.model('Availability', AvailabilityPlannerSchema);
 
-
-// {
-//     "category": "Module #5",
-//     "segments": [ {
-//     "start": "2016-01-01",
-//     "end": "2016-01-12",
-//     "color": "#448e4d",
-//     "task": "Gathering requirements"
-// }, {
-//     "start": "2016-01-12",
-//     "end": "2016-01-19",
-//     "task": "Producing specifications"
-// } ]
-// }
