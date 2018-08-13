@@ -9,7 +9,7 @@ router.get('/get_user/:id', controller.get_user);
 
 router.post('/user/:id', controller.user_edit);
 
-
+router.post('/edit_username/:id', controller.user_edit_username);
 
 
 module.exports = router;
