@@ -17,7 +17,8 @@ exports.expense_post = (req, res, next) => {
     var data = {
         title: req.body.title,
         category: req.body.category,
-        amount: req.body.amount
+        amount: req.body.amount,
+        event: req.body.event
     }
     expense.create(data, (err, data) => {
         if(err){

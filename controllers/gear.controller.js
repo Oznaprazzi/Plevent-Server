@@ -15,7 +15,8 @@ exports.gear_list = (req, res, next) => {
 
 exports.item_post = (req, res, next) => {
     var data = {
-        description: req.body.description
+        description: req.body.description,
+        event: req.body.event
     }
     item.create(data, (err, data) => {
         if(err){
