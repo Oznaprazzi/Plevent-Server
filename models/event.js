@@ -10,6 +10,7 @@ var EventSchema = new Schema(
     {
         eventName: {type: String, required: true, max: 100},
         eventDate:  {type: Date, required:true},
+        hasAvalibilityPlanner: {type: Boolean, default: false},
         users: [
             {type: Schema.Types.ObjectId,  ref: 'User'}
         ]
