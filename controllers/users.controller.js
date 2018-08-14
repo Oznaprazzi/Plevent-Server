@@ -34,6 +34,9 @@ exports.user_edit = (req, res, next) =>{
         });
     });
 
+    function handleError(err){
+        console.log(err);
+    }
 }
 
 exports.user_edit_username = (req, res, next) => {
