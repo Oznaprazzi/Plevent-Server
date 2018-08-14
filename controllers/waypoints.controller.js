@@ -31,8 +31,20 @@ exports.add_point = (req, res, next) => {
     });
 }
 
+exports.edit_point = (req, res, next) => {
+    var id = req.params.id;
+    waypoint.findByIdAndUpdate(id, {$set: req.body}, {new: false}, (err, points) => {
+        if(err){
+            res.status(500);
+            res.send(err);
+        } else {
+            res.json(points);
+        }
+    })
+}
+
 exports.delete_point = (req, res, next) => {
     const id = req.params.id;
-    item.deleteMany({'_id': id}).catch(err =>{ res.status(500); res.send(err) });
+    waypoint.deleteMany({'_id': id}).catch(err =>{ res.status(500); res.send(err) });
     res.json({message: 'Successful'});
 }
