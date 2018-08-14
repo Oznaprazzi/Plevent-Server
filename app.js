@@ -16,8 +16,12 @@ var gears = require('./routes/gears');
 var aval = require('./routes/availability')
 var expenses = require('./routes/expenses');
 var chatbot = require('./routes/chatbot');
+<<<<<<< HEAD
 var transports = require('./routes/trans');
 
+=======
+var waypoints = require('./routes/waypoints');
+>>>>>>> master
 
 var app = express();
 
@@ -55,6 +59,7 @@ app.use('/availability', aval);
 app.use('/expenses', expenses);
 app.use('/chatbot', chatbot);
 app.use('/transports', transports);
+app.use('/waypoints', waypoints);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
