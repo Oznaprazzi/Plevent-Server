@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var accommodation = require('../models/accommodation');
-var event = require('../models/event');
 
 exports.accommo_list = (req, res, next) => {
     var id = req.params.id;
