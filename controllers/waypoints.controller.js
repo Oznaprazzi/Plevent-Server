@@ -23,7 +23,8 @@ exports.add_point = (req, res, next) => {
     }
     waypoint.create(data, (err, data) => {
         if(err){
-            res.error(err);
+            res.status(500);
+            res.send(err);
         } else {
             res.json(data);
         }
@@ -32,6 +33,6 @@ exports.add_point = (req, res, next) => {
 
 exports.delete_point = (req, res, next) => {
     const id = req.params.id;
-    item.deleteMany({'_id': id}).catch(err => res.error(err));
+    item.deleteMany({'_id': id}).catch(err =>{ res.status(500); res.send(err) });
     res.json({message: 'Successful'});
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <title>Test Rig</title>
+    <!-- Bootstrap Setup -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Client-Side Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src="./waypoint.js"></script>
+  </head>
+
+  <body ng-controller="myCtrl" ng-init="init()">
+      <input type="text" placeholder="Enter title" style="width: 25vh" ng-model="title"/>
+      <input type="text" placeholder="Enter address" style="width: 25vh" ng-model="address"/>
+      <input type="text" placeholder="Enter longitude" style="width: 25vh" ng-model="longitude"/>
+      <input type="text" placeholder="Enter latitude" style="width: 25vh" ng-model="latitude"/>
+      <button class="btn btn-primary" ng-click="send()">Send</button>
+  </body>
+</html>

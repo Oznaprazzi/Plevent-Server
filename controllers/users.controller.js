@@ -50,4 +50,7 @@ exports.user_edit = (req, res, next) =>{
         });
     });
 
+    function handleError(err){
+        console.log(err);
+    }
 }

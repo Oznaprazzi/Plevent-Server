@@ -20,7 +20,8 @@ exports.item_post = (req, res, next) => {
     }
     item.create(data, (err, data) => {
         if(err){
-            res.error(err);
+            res.status(500);
+            res.send(err);
         } else {
             res.json(data);
         }

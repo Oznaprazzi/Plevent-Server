@@ -52,3 +52,7 @@ exports.accommo_edit = (req, res, next) => {
         res.send(accommo);
     });
 }
+
+function handleError(err){
+    console.log(err);
+}
