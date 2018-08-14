@@ -16,12 +16,8 @@ var gears = require('./routes/gears');
 var aval = require('./routes/availability')
 var expenses = require('./routes/expenses');
 var chatbot = require('./routes/chatbot');
-<<<<<<< HEAD
 var transports = require('./routes/trans');
-
-=======
 var waypoints = require('./routes/waypoints');
->>>>>>> master
 
 var app = express();
 
