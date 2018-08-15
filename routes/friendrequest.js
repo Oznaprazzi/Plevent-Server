@@ -10,7 +10,7 @@ const controller = require('../controllers/friendrequest.controller');
 
 router.post('/create_friend_request/', controller.create_friend_request);
 //
-// router.get('/get_aval_planner/:id/:uid', controller.get_aval_planner);
+router.get('/get_friend_request/:uid', controller.get_friend_request);
 //
 // router.delete('/delete_plan/:id', controller.delete_plan);
 

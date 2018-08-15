@@ -19,3 +19,26 @@ exports.create_friend_request = (req, res, next) => {
         }
     });
 };
+
+exports.get_friend_request = (req, res, next) => {
+    var id = req.params.uid;
+    friendsRequest.find({user: id}).populate({path: 'friendRequest'}). exec(function (err, data) {
+        if (err) return handleError(err);
+        res.send(data);
+        console.log(res);
+    });
+        // for(let i = 0; i < events.length; i++){
+        //     for(let j = 0; j < events[i].users.length; j++){
+        //         if(events[i].users[j] == id){
+        //             list.push(events[i]);
+        //         }
+        //     }
+        // }
+        // res.send(list);
+    //});
+};
+
+function handleError(err){
+    console.log(err);
+
+}
