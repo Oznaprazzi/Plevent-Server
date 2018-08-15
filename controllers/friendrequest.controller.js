@@ -7,9 +7,9 @@ exports.create_friend_request = (req, res, next) => {
     // var friendsid = reg.params.friendsid;
 
     var data = {
+        sender: req.body.sender,
         friendRequest: req.body.friendRequest
     };
-    console.log(data);
     friendsRequest.create(data, (err, data) => {
         if (err) {
             res.send(err);
@@ -21,7 +21,17 @@ exports.create_friend_request = (req, res, next) => {
 
 exports.get_friend_request = (req, res, next) => {
     var id = req.params.uid;
-    friendsRequest.find({friendRequest: id}).populate({path: 'friendRequest'}).exec(function (err, data) {
+    friendsRequest.find({friendRequest: id}).populate({path: 'sender'}).exec(function (err, data) {
+        if (err) return handleError(err);
+        res.send(data);
+
+    });
+};
+
+
+exports.get_all_friend_request = (req, res, next) => {
+    var id = req.params.uid;
+    friendsRequest.find({sender: id}).populate({path: 'friendRequest'}).exec(function (err, data) {
         if (err) return handleError(err);
         res.send(data);
 

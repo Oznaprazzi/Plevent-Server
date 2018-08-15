@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
 
 var FriendsRequestSchema = new Schema(
     {
-        // user: {type: Schema.Types.ObjectId, required: true, ref: 'User'},
+        sender: {type: Schema.Types.ObjectId, required: true, ref: 'User'},
         friendRequest: {type: Schema.Types.ObjectId, required: true, ref: 'User'},
     }
 );
