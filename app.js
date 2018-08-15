@@ -17,7 +17,7 @@ var aval = require('./routes/availability')
 var expenses = require('./routes/expenses');
 var chatbot = require('./routes/chatbot');
 var friendslist = require('./routes/friendslist');
-
+var friendsrequest = require('./routes/friendrequest');
 
 var app = express();
 
@@ -55,6 +55,7 @@ app.use('/availability', aval);
 app.use('/expenses', expenses);
 app.use('/chatbot', chatbot);
 app.use('/friendslist', friendslist);
+app.use('/friendsrequest', friendsrequest);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     var err = new Error('Not Found');

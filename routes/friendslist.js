@@ -8,7 +8,7 @@ const router = express.Router();
 const controller = require('../controllers/friendslist.controller');
 
 
-// router.get('/get_all_plan/:id', controller.get_all);
+// router.post('/send_friend_request/:userid/:friendsid', controller.send_friend_request);
 //
 // router.post('/create_planner', controller.create_planner);
 //

@@ -5,14 +5,12 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var FriendsListSchema = new Schema(
+var FriendsRequestSchema = new Schema(
     {
         user: {type: Schema.Types.ObjectId, required: true, ref: 'User'},
-        friendsList: {type: Schema.Types.ObjectId, required: true, ref: 'User'}
-
-
+        friendRequest: {type: Schema.Types.ObjectId, required: true, ref: 'User'},
     }
 );
 
 // Export Model
-module.exports = mongoose.model('FriendsList', FriendsListSchema);
+module.exports = mongoose.model('FriendsRequest', FriendsRequestSchema);
