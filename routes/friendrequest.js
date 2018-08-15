@@ -14,7 +14,7 @@ router.get('/get_friend_request/:uid', controller.get_friend_request);
 
 router.get('/get_all_friend_request/:uid', controller.get_all_friend_request);
 //
-// router.delete('/delete_plan/:id', controller.delete_plan);
+router.delete('/delete_friend_request/:id', controller.delete_friend_request);
 
 
 

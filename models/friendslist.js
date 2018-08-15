@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 var FriendsListSchema = new Schema(
     {
         user: {type: Schema.Types.ObjectId, required: true, ref: 'User'},
-        friendsList: {type: Schema.Types.ObjectId, required: true, ref: 'User'}
+        friends: {type: Schema.Types.ObjectId, required: true, ref: 'User'}
 
 
     }

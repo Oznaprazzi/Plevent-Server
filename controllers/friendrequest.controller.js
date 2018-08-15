@@ -21,7 +21,7 @@ exports.create_friend_request = (req, res, next) => {
 
 exports.get_friend_request = (req, res, next) => {
     var id = req.params.uid;
-    friendsRequest.find({friendRequest: id}).populate({path: 'sender'}).exec(function (err, data) {
+    friendsRequest.find({friendRequest: id}).populate({path: 'sender'}).populate({path:"friendRequest"}).exec(function (err, data) {
         if (err) return handleError(err);
         res.send(data);
 
@@ -37,6 +37,12 @@ exports.get_all_friend_request = (req, res, next) => {
 
     });
 };
+exports.delete_friend_request = (req, res, next) => {
+    var id = req.params.id;
+    friendsRequest.deleteMany({_id: id}).catch(err => console.log(err));
+    res.json({ message: 'Sucessful' });
+};
+
 
 function handleError(err){
     console.log(err);
