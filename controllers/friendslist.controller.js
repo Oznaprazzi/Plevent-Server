@@ -29,14 +29,30 @@ exports.add_friend = (req, res, next) => {
 
 exports.unfriend = (req, res, next) => {
     var id = req.params.id;
+    // user
     var sid = req.params.sid;
+    // friend
     var rid = req.params.rid;
 
-    var otherFriendObject;
-    friendsList.find({}, (err, data) => {
 
-        res.send(data);
+
+    friendsList.find({user : rid}, (err, friends) => {
+        if(err){
+            res.send(err);
+        }else {
+            var friendLinkObject;
+
+            friendLinkObject = friends;
+            friendsList.deleteMany({_id: id}).catch(err => console.log(err));
+            friendsList.deleteMany({_id: friendLinkObject[0]._id}).catch(err => console.log(err));
+            res.json(`Successfully deleted ${id}`);
+        }
     });
-    // friendsRequest.deleteMany({_id: id}).catch(err => console.log(err));
-    // res.json({ message: 'Sucessful' });
+
+
+
+
+
+
+
 };
