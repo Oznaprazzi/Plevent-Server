@@ -9,6 +9,8 @@ const controller = require('../controllers/events.controller');
 
 router.get('/event/:id', controller.get_all_events);
 
+router.get('/get_event/:id', controller.get_event);
+
 router.post('/add_event', controller.add_event);
 
 router.post('/edit_event/:id', controller.edit_event);

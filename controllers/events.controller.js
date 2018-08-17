@@ -38,6 +38,17 @@ exports.get_all_events = (req, res, next) => {
     });
 }
 
+exports.get_event = (req, res, next) => {
+    var id = req.params.id;
+    event.findOne({_id: id}).populate({path: 'users', type: id}).exec((err, event) => {
+        if(err) {
+            res.send(err);
+        } else {
+            res.send(event)
+        }
+    });
+}
+
 exports.edit_event = (req, res, next) => {
     var id = req.params.id;
     var valid = verify.verify(req.body);

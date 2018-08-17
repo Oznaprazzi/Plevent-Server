@@ -46,9 +46,13 @@ exports.user_edit = (req, res, next) =>{
 
 exports.user_edit_username = (req, res, next) => {
     var id = req.params.id;
-
     var username = req.body.username;
     var query = user.findOne({username: username});
+    var valid = verify.verify(req.body);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     // Authenticate
     query.exec((err, u) => {
         if(err) {
