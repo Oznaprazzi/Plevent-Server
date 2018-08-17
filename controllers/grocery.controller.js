@@ -1,4 +1,5 @@
 var item = require('../models/grocery');
+var verify = require('../services/verification');
 
 exports.grocery_list = (req, res, next) => {
     var id = req.params.id;
@@ -18,7 +19,11 @@ exports.item_post = (req, res, next) => {
         description: req.body.description,
         event: req.body.event
     }
-    console.log(data);
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     item.create(data, (err, data) => {
         if(err){
             res.status(500);

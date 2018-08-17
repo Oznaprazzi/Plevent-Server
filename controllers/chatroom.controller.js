@@ -1,6 +1,4 @@
-/**
- * Created by Dipen on 3/08/2018.
- */
+var verify = require('../services/verification');
 var chatroom = require('../models/chatroom');
 var mongoose = require('mongoose');
 const updateQuery = {};
@@ -10,6 +8,11 @@ exports.add_chatroom = (req, res, next) => {
         event: req.body.event,
         chatid: req.body.chatid
     };
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     chatroom.create(data, (err, data) => {
         if (err) {
             res.send(err);

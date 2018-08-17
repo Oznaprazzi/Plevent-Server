@@ -1,4 +1,4 @@
-
+var verify = require('../services/verification');
 var friendsList = require('../models/friendslist');
 var mongoose = require('mongoose');
 
@@ -15,9 +15,12 @@ exports.add_friend = (req, res, next) => {
     var data = {
         user: req.body.user,
         friends: req.body.friends,
-
-
     };
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     friendsList.create(data, (err, data) => {
         if (err) {
             res.send(err);
@@ -31,9 +34,6 @@ exports.unfriend = (req, res, next) => {
     var id = req.params.id;
     // friend
     var rid = req.params.rid;
-
-
-
     friendsList.find({user : rid}, (err, friends) => {
         if(err){
             res.send(err);
@@ -46,11 +46,4 @@ exports.unfriend = (req, res, next) => {
             res.json(`Successfully deleted ${id}`);
         }
     });
-
-
-
-
-
-
-
 };

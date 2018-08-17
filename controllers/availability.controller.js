@@ -1,7 +1,4 @@
-/**
- * Created by Dipen on 10/08/2018.
- */
-
+var verify = require('../services/verification');
 var avalibility = require('../models/avalibility');
 var mongoose = require('mongoose');
 
@@ -12,8 +9,12 @@ exports.create_planner = (req, res, next) => {
         event: req.body.event,
         name: req.body.name,
         user: req.body.user
-
     };
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     avalibility.create(data, (err, data) => {
         if (err) {
             res.send(err);

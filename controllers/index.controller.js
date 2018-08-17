@@ -1,6 +1,6 @@
 var user = require('../models/user');
 var event = require('../models/event');
-
+var verify = require('../services/verification');
 var security = require('../services/security');
 
 exports.login = (req, res, next) => {
@@ -41,7 +41,11 @@ exports.register = (req, res, next) => {
         lname: req.body.lname,
         bdate: req.body.bdate
     };
-    console.log(data);
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     user.create(data, (err, data) => {
         if(err){
             res.send(err);

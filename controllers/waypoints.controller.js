@@ -1,4 +1,5 @@
 var waypoint = require('../models/waypoint');
+var verify = require('../services/verification');
 
 exports.waypoint_list = (req, res, next) => {
     var eventId = req.params.eventId;
@@ -20,6 +21,11 @@ exports.add_point = (req, res, next) => {
         longitude: req.body.longitude,
         latitude: req.body.latitude,
         event: req.body.event
+    }
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
     }
     waypoint.create(data, (err, data) => {
         if(err){

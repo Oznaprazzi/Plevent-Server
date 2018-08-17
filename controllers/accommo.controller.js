@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var accommodation = require('../models/accommodation');
+var verify = require('../services/verification');
 
 exports.accommo_list = (req, res, next) => {
     var id = req.params.id;
@@ -28,6 +29,11 @@ exports.accommo_post = (req, res, next) => {
         guests: req.body.guests,
         event: req.body.event
     };
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     accommodation.create(data, (err, data) => {
         if(err){
             res.send(err);

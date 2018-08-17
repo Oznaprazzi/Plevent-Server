@@ -1,4 +1,5 @@
 var item = require('../models/gear');
+var verify = require('../services/verification');
 
 exports.gear_list = (req, res, next) => {
     var id = req.params.id;
@@ -17,6 +18,11 @@ exports.item_post = (req, res, next) => {
     var data = {
         description: req.body.description,
         event: req.body.event
+    }
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
     }
     item.create(data, (err, data) => {
         if(err){

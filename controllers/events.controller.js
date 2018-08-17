@@ -1,6 +1,4 @@
-/**
- * Created by Dipen on 3/08/2018.
- */
+var verify = require('../services/verification');
 var event = require('../models/event');
 var mongoose = require('mongoose');
 const updateQuery = {};
@@ -11,6 +9,11 @@ exports.add_event = (req, res, next) => {
         eventDate: req.body.eventDate,
         users: req.body.users
     };
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     event.create(data, (err, data) => {
         if (err) {
             res.send(err);

@@ -1,6 +1,7 @@
 var user = require('../models/user');
 var mongoose = require('mongoose');
 var security = require('../services/security');
+var verify = require('../services/verification');
 
 exports.get_all_users = (req, res, next) => {
     user.find({}, (err, users) => {
@@ -67,7 +68,11 @@ exports.user_change_password = (req, res, next) => {
     var data = {
         password: password
     };
-
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     user.findByIdAndUpdate(id, {$set: data}, {new: false}, function (err, user) {
         if (err) return handleError(err);
         res.send(user);

@@ -1,4 +1,5 @@
 var expense = require('../models/expense');
+var verify = require('../services/verification');
 
 exports.expense_list = (req, res, next) => {
     var id = req.params.id;
@@ -19,6 +20,11 @@ exports.expense_post = (req, res, next) => {
         category: req.body.category,
         amount: req.body.amount,
         event: req.body.event
+    };
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
     }
     expense.create(data, (err, data) => {
         if(err){

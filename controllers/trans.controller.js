@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var transports = require('../models/trans');
+var verify = require('../services/verification');
 
 exports.trans_list = (req, res, next) => {
     var id = req.params.id;
@@ -24,6 +25,11 @@ exports.trans_post = (req, res, next) => {
         owner: req.body.owner,
         event: req.body.event
     };
+    var valid = verify.verify(data);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     transports.create(data, (err, data) => {
         if(err){
             res.send(err);
