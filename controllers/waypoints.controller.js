@@ -22,8 +22,9 @@ exports.add_point = (req, res, next) => {
         latitude: req.body.latitude,
         event: req.body.event
     }
+
     var valid = verify.verify(data);
-    if(!valid){
+    if(!data.title || !data.address || !data.event){
         res.json({message: 'Something went wrong. Missing field.'});
         return;
     }
@@ -32,6 +33,7 @@ exports.add_point = (req, res, next) => {
             res.status(500);
             res.send(err);
         } else {
+
             res.json(data);
         }
     });
