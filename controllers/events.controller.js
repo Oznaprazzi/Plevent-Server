@@ -23,10 +23,10 @@ exports.add_event = (req, res, next) => {
 exports.get_all_events = (req, res, next) => {
     var id = req.params.id;
     var list = [];
-    event.find({}, (err, events) => {
+    event.find().populate({path: 'users', type: id}).exec(function(err, events){
         for(let i = 0; i < events.length; i++){
             for(let j = 0; j < events[i].users.length; j++){
-                if(events[i].users[j] == id){
+                if(events[i].users[j]._id == id){
                     list.push(events[i]);
                 }
             }

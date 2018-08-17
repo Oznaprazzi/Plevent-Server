@@ -16,8 +16,14 @@ var gears = require('./routes/gears');
 var aval = require('./routes/availability')
 var expenses = require('./routes/expenses');
 var chatbot = require('./routes/chatbot');
+
 var friendslist = require('./routes/friendslist');
 var friendsrequest = require('./routes/friendrequest');
+
+var transports = require('./routes/trans');
+var waypoints = require('./routes/waypoints');
+var chatrooms = require('./routes/chatroom');
+
 
 var app = express();
 
@@ -54,8 +60,15 @@ app.use('/gears', gears);
 app.use('/availability', aval);
 app.use('/expenses', expenses);
 app.use('/chatbot', chatbot);
+
 app.use('/friendslist', friendslist);
 app.use('/friendsrequest', friendsrequest);
+
+app.use('/transports', transports);
+app.use('/waypoints', waypoints);
+app.use('/chatrooms', chatrooms);
+
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     var err = new Error('Not Found');

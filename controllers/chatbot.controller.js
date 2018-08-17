@@ -13,5 +13,5 @@ exports.get_reply = (req, res, next) => {
             message: reply
         }
         res.json(data);
-    }).catch(err => res.error(err));
+    }).catch(err => {res.status(500); res.send(err)});
 }

@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var accommodation = require('../models/accommodation');
-var event = require('../models/event');
 
 exports.accommo_list = (req, res, next) => {
     var id = req.params.id;
@@ -51,4 +50,8 @@ exports.accommo_edit = (req, res, next) => {
         if (err) return handleError(err);
         res.send(accommo);
     });
+}
+
+function handleError(err){
+    console.log(err);
 }
