@@ -12,8 +12,7 @@ router.post('/add_friend', controller.add_friend);
 
 router.get('/get_all_friend/:uid', controller.get_all_friend);
 
-router.delete('/unfriend/:id/:sid/:rid', controller.unfriend);
-router.delete('/unfriend/:id/:sid/:rid', controller.unfriend);
+router.delete('/unfriend/:id/:rid', controller.unfriend);
 
 
 module.exports = router;

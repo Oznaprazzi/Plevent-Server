@@ -11,6 +11,5 @@ var FriendsRequestSchema = new Schema(
         friendRequest: {type: Schema.Types.ObjectId, required: true, ref: 'User'},
     }
 );
-
 // Export Model
 module.exports = mongoose.model('FriendsRequest', FriendsRequestSchema);

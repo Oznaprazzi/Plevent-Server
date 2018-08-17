@@ -31,10 +31,25 @@ exports.get_friend_request = (req, res, next) => {
 
 exports.get_all_friend_request = (req, res, next) => {
     var id = req.params.uid;
-    friendsRequest.find({sender: id}).populate({path: 'friendRequest'}).exec(function (err, data) {
-        if (err) return handleError(err);
-        res.send(data);
 
+    friendsRequest.find().populate({path: 'friendRequest'}).exec(function (err, data) {
+        if (err) return handleError(err);
+        var combinedArray = [];
+
+        for(let i = 0; i < data.length; i++){
+            if(data[i].sender == id){
+                combinedArray.push(data);
+            }
+        }
+        friendsRequest.find({friendRequest: id}).populate({path: 'friendRequest'}).exec(function (err, data2) {
+            if (err) return handleError(err);
+            for(let i = 0; i < data2.length; i++){
+                if(data2[i].sender == id){
+                    combinedArray.push(data2);
+                }
+            }
+            res.send(combinedArray);
+        });
     });
 };
 exports.delete_friend_request = (req, res, next) => {

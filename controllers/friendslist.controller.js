@@ -29,8 +29,6 @@ exports.add_friend = (req, res, next) => {
 
 exports.unfriend = (req, res, next) => {
     var id = req.params.id;
-    // user
-    var sid = req.params.sid;
     // friend
     var rid = req.params.rid;
 
