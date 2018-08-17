@@ -25,7 +25,11 @@ exports.get_user = (req, res, next) => {
 
 exports.user_edit = (req, res, next) =>{
     var id = req.params.id;
-
+    var valid = verify.verify(req.body);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     user.findByIdAndUpdate(id, {$set: req.body}, {new: false}, function (err, user) {
         console.log(req.body);
         if (err) return handleError(err);

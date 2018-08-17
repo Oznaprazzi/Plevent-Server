@@ -48,6 +48,11 @@ exports.trans_delete = (req, res, next) => {
 
 exports.trans_edit = (req, res, next) => {
     var id = req.params.id;
+    var valid = verify.verify(req.body);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     transports.findByIdAndUpdate(id, {$set: req.body}, {new: false}, function (err, trans) {
         if (err) return handleError(err);
         res.send(trans);

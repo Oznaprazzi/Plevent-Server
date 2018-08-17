@@ -38,6 +38,11 @@ exports.expense_post = (req, res, next) => {
 
 exports.expense_edit = (req, res, next) => {
     var id = req.params.id;
+    var valid = verify.verify(req.body);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     expense.findByIdAndUpdate(id, {$set: req.body}, {new:false}, (err, expenses) => {
         if(err){
             res.status(500);

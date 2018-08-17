@@ -52,6 +52,11 @@ exports.accommo_delete = (req, res, next) => {
 
 exports.accommo_edit = (req, res, next) => {
     var id = req.params.id;
+    var valid = verify.verify(req.body);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     accommodation.findByIdAndUpdate(id, {$set: req.body}, {new: false}, function (err, accommo) {
         if (err) return handleError(err);
         res.send(accommo);

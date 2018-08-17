@@ -40,6 +40,11 @@ exports.get_all_events = (req, res, next) => {
 
 exports.edit_event = (req, res, next) => {
     var id = req.params.id;
+    var valid = verify.verify(req.body);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     event.findByIdAndUpdate(id, {$set: req.body}, {new: false}, function (err, events) {
         if (err) return handleError(err);
         res.send(events);

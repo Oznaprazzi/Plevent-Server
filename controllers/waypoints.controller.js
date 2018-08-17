@@ -39,6 +39,11 @@ exports.add_point = (req, res, next) => {
 
 exports.edit_point = (req, res, next) => {
     var id = req.params.id;
+    var valid = verify.verify(req.body);
+    if(!valid){
+        res.json({message: 'Something went wrong. Missing field.'});
+        return;
+    }
     waypoint.findByIdAndUpdate(id, {$set: req.body}, {new: false}, (err, points) => {
         if(err){
             res.status(500);
