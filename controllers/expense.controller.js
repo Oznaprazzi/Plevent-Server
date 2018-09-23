@@ -2,13 +2,13 @@ var expense = require('../models/expense');
 var verify = require('../services/verification');
 
 exports.expense_list = (req, res, next) => {
-    // var id = req.params.id;
+    var id = req.params.id;
     var list = [];
     expense.find({}, (err, items) => {
         for(let i = 0; i < items.length; i++){
-            // if(items[i].event == id){
+            if(items[i].event == id){
                 list.push(items[i]);
-            // }
+            }
         }
         res.send(list);
     });
