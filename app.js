@@ -28,7 +28,7 @@ var chatrooms = require('./routes/chatroom');
 var app = express();
 
 // Database Configuration & Setup
-var mongoDB = 'mongodb://admin:adminpw1@ds135619.mlab.com:35619/plevent-db';
+var mongoDB = 'mongodb://place-your-own-here';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
